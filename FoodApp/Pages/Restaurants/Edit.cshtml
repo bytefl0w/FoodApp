@@ -4,3 +4,29 @@
 }
 
 <h2>Editing @Model.Restaurant.Name</h2>
+
+<form method="post">
+    <!-- the asp-for attribute does two things, sets the value and name attribute-->
+    <input type="hidden" asp-for="Restaurant.Id" />
+    <div class="form-group">
+        <label asp-for="Restaurant.Name"></label>
+        <input asp-for="Restaurant.Name" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Restaurant.Location"></label>
+        <input asp-for="Restaurant.Location" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Restaurant.Cuisine"></label>
+        <!-- NOTE: asp-for assumes that you are working on your Model., but not asp-items.-->
+        <!-- With asp-items, data source can come from anywhere -->
+        <select class="form-control" asp-for="Restaurant.Cuisine"
+                asp-items="Model.Cuisines">
+
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
